@@ -1,0 +1,48 @@
+body{
+    background-color: beige;
+    margin: 0px;
+    font-family: Verdana, sans-serif;
+}
+
+.container{
+    width: 80vw;
+    height: 100vh;
+    position: relative;
+    margin: auto;
+}
+
+header{
+    text-align: center;
+
+}
+
+ul{
+    padding: 0;
+    text-align: center;
+}
+
+li{
+    list-style-type: none;
+    display: inline;
+    margin: 0 2vw;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.wrapper{
+    position: relative;
+    top: 2vh;
+    left: 2vw;
+}
+
+#david{
+    width: 10vw;
+    float: left;
+    border: 4px solid white;
+    margin-right: 2vw;
+}
+
+
