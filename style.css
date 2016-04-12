@@ -27,9 +27,17 @@ nav ul li{
     margin: 0 2vw;
 }
 
-a{
+.nav-item, .ext-link{
     text-decoration: none;
     color: black;
+}
+
+a:hover{
+    color: darkblue;
+}
+
+a.active {
+    color: darkred;
 }
 
 .wrapper{
