@@ -1,0 +1,36 @@
+figure{
+    position: relative;
+    display: inline-block;
+}
+
+figcaption{
+    position: absolute;
+    height: 110%;
+    width: 110%;
+    top: -5%;
+    left: 105%;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: 1s;
+}
+
+figcaption h3{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+    transition: 2s;
+    transition-delay: 2s;
+    text-decoration: none;
+}
+
+figure:hover figcaption{
+    left: -5%;
+    opacity: 1;
+}
+
+figure:hover h3{
+    bottom: 20%;
+}
