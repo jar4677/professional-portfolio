@@ -4,17 +4,22 @@
 var app = angular.module('portfolioApp', ['ngRoute']);
 
 app.controller('mainController', function () {
-    
-})
+        
+    })
     .controller('skillsController', function () {
         
     })
-    .controller('expController');
+    .controller('expController', function () {
+        
+    })
+    .controller('contactController', function () {
+        
+    });
 
 app.config(function ($routeProvider) {
     $routeProvider
-        .when('/', {
-            templateUrl: "index.html",
+        .when('/about', {
+            templateUrl: "about.html",
             controller: 'mainController'
         })
         .when('/skills', {
@@ -28,5 +33,8 @@ app.config(function ($routeProvider) {
         .when('/contact', {
             templateUrl: 'contact-me.html',
             controller: 'contactController'
+        })
+        .otherwise({
+            redirectTo: '/about'
         });
 });

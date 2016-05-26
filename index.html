@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="main-angular.js"></script>
 </head>
-<body>
+<body ng-app="portfolioApp">
 <div class="container">
     <!--Bootstrap inverted, fixed navbar-->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -30,45 +30,19 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html" class="">About Me</a></li>
-                    <li><a href="skills.html" class="">Skills</a></li>
-                    <li><a href="experience.html" class="">Experience</a></li>
-                    <li><a href="contact-me.html" class="">Contact Me</a></li>
+                    <li><a href="#about" class="">About Me</a></li>
+                    <li><a href="#skills" class="">Skills</a></li>
+                    <li><a href="#experience" class="">Experience</a></li>
+                    <li><a href="#contact" class="">Contact Me</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!--Bootstrap jumbotron-->
-    <div class="jumbotron">
-        <h1>Something here<span class="glyphicon glyphicon-signal"></span></h1>
-        <figure>
-            <img src="images/david.jpg" class="img-circle">
-            <figcaption>
-                <h3>Michelangelo's David</h3>
-            </figcaption>
-        </figure>
+    <div ng-controller="mainController">
+        <div ng-view></div>
     </div>
-
-
-    <main>
-        <div class="">
-            <h1>About Me</h1>
-
-            <h3>My Background</h3>
-            <p>Lorem ipsum dolor sit amet, vel fugit urbanitas et, ne tritani assueverit est. Duo solet percipit
-                euripidis ea, nostro moderatius usu cu. Quodsi accusata facilisis id pro. Et tincidunt voluptatum eam,
-                ne agam iisque eam, in suscipit mnesarchum voluptatum usu. Sea et novum tempor.</p>
-            <h3>Why I am taking this course</h3>
-            <p>Lorem ipsum dolor sit amet, vel fugit urbanitas et, ne tritani assueverit est. Duo solet percipit
-                euripidis ea, nostro moderatius usu cu. Quodsi accusata facilisis id pro. Et tincidunt voluptatum eam,
-                ne agam iisque eam, in suscipit mnesarchum voluptatum usu. Sea et novum tempor.</p>
-            <h3>What type of job I want to get</h3>
-            <p>Lorem ipsum dolor sit amet, vel fugit urbanitas et, ne tritani assueverit est. Duo solet percipit
-                euripidis ea, nostro moderatius usu cu. Quodsi accusata facilisis id pro. Et tincidunt voluptatum eam,
-                ne agam iisque eam, in suscipit mnesarchum voluptatum usu. Sea et novum tempor.</p>
-        </div>
-    </main>
 
 </div>
 </body>
