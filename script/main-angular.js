@@ -27,22 +27,22 @@ app.controller('aboutController', function ($scope) {
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/about', {
-            templateUrl: "about.html",
+            templateUrl: "pages/about.php",
             controller: 'aboutController',
             controllerAs: 'ac'
         })
         .when('/skills', {
-            templateUrl: 'skills.html',
+            templateUrl: 'pages/skills.php',
             controller: 'skillsController',
             controllerAs: 'sc'
         })
         .when('/experience', {
-            templateUrl: "experience.html",
+            templateUrl: "pages/experience.php",
             controller:'expController',
             controllerAs: 'ec'
         })
         .when('/contact', {
-            templateUrl: 'contact-me.html',
+            templateUrl: 'pages/contact-me.php',
             controller: 'contactController',
             controllerAs: 'cc'
         })

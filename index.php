@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +15,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
     <!--Local-->
-    <link rel="stylesheet" href="style.css">
-    <script src="main-angular.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script/main-angular.js"></script>
 </head>
 <body ng-app="portfolioApp">
 <div class="container">
@@ -30,10 +33,10 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#about" class="">About Me</a></li>
-                    <li><a href="#skills" class="">Skills</a></li>
-                    <li><a href="#experience" class="">Experience</a></li>
-                    <li><a href="#contact" class="">Contact Me</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact Me</a></li>
                 </ul>
             </div>
         </div>
