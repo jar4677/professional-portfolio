@@ -1,9 +1,9 @@
 <div class="jumbotron">
-    <h1>Something here<span class="glyphicon glyphicon-signal"></span></h1>
+    <h1><span class="glyphicon glyphicon-signal"></span> {{ pageName }}</h1>
     <figure>
-        <img src="images/david.jpg" class="img-circle">
+        <img ng-src="{{ mainImage }}" class="img-circle">
         <figcaption>
-            <h3>Michelangelo's David</h3>
+            <h3>{{ caption }}</h3>
         </figcaption>
     </figure>
 </div>

@@ -34,3 +34,7 @@ figure:hover figcaption{
 figure:hover h3{
     bottom: 20%;
 }
+
+.img-circle {
+    width: 250px;
+}

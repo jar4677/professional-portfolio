@@ -3,36 +3,48 @@
  */
 var app = angular.module('portfolioApp', ['ngRoute']);
 
-app.controller('mainController', function () {
-        
+app.controller('aboutController', function ($scope) {
+        $scope.pageName = "About Me";
+        $scope.mainImage = "images/jon_headshot.jpg";
+        $scope.caption = "Jon Rasmussen";
     })
-    .controller('skillsController', function () {
-        
+    .controller('skillsController', function ($scope) {
+        $scope.pageName = "My Skills";
+        $scope.mainImage = "images/david.jpg";
+        $scope.caption = "Michelangelo's David";
     })
-    .controller('expController', function () {
-        
+    .controller('expController', function ($scope) {
+        $scope.pageName = "My Experience";
+        $scope.mainImage = "images/david.jpg";
+        $scope.caption = "Michelangelo's David";
     })
-    .controller('contactController', function () {
-        
+    .controller('contactController', function ($scope) {
+        $scope.pageName = "Contact Me";
+        $scope.mainImage = "images/david.jpg";
+        $scope.caption = "Michelangelo's David";
     });
 
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/about', {
             templateUrl: "about.html",
-            controller: 'mainController'
+            controller: 'aboutController',
+            controllerAs: 'ac'
         })
         .when('/skills', {
             templateUrl: 'skills.html',
-            controller: 'skillsController'
+            controller: 'skillsController',
+            controllerAs: 'sc'
         })
         .when('/experience', {
             templateUrl: "experience.html",
-            controller:'expController'
+            controller:'expController',
+            controllerAs: 'ec'
         })
         .when('/contact', {
             templateUrl: 'contact-me.html',
-            controller: 'contactController'
+            controller: 'contactController',
+            controllerAs: 'cc'
         })
         .otherwise({
             redirectTo: '/about'
