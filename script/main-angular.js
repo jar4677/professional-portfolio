@@ -85,16 +85,6 @@ app.controller('aboutController', function ($scope) {
                     "detail3": "Detail 3"
                 }
             },
-            'php': {
-                'name': 'PHP',
-                'logo': "images/icons/php_logo.png",
-                'id': 'php',
-                'details': {
-                    "detail1": "Detail 1",
-                    "detail2": "Detail 2",
-                    "detail3": "Detail 3"
-                }
-            },
             'ajax': {
                 'name': 'AJAX',
                 'logo': "images/icons/ajax_logo.png",
@@ -105,15 +95,30 @@ app.controller('aboutController', function ($scope) {
                     "detail3": "Detail 3"
                 }
             },
-            'angular': {
-                'name': 'AngularJS',
-                'logo': "images/icons/angular_logo.png",
-                'id': 'angular'
-            },
             'bootstrap': {
                 'name': 'Bootstrap',
                 'logo': "images/icons/bootstrap_logo.png",
                 'id': 'bootstrap',
+                'details': {
+                    "detail1": "Detail 1",
+                    "detail2": "Detail 2",
+                    "detail3": "Detail 3"
+                }
+            },
+            'angular': {
+                'name': 'AngularJS',
+                'logo': "images/icons/angular_logo.png",
+                'id': 'angular',
+                'details': {
+                    "detail1": "Detail 1",
+                    "detail2": "Detail 2",
+                    "detail3": "Detail 3"
+                }
+            },
+            'php': {
+                'name': 'PHP',
+                'logo': "images/icons/php_logo.png",
+                'id': 'php',
                 'details': {
                     "detail1": "Detail 1",
                     "detail2": "Detail 2",
