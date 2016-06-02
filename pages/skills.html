@@ -1,0 +1,32 @@
+<div class="jumbotron">
+    <h1>{{ pageName }} <span class="glyphicon glyphicon-{{ glyphicon }}"></span></h1>
+    <figure class="skill-logo-fig" ng-repeat="skill in sc.skills" id="{{ skill.id }}-logo">
+        <a data-toggle="collapse" data-parent="#accordion" data-target="#{{ skill.id }}-panel">
+            <img ng-src="{{ skill.logo }}" class="skill-logo-img">
+        </a>
+    </figure>
+</div>
+
+<main>
+    <div class="">
+        <h1>Skills</h1>
+        <h3>My Skills</h3>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default" ng-repeat="skill in sc.skills">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" data-target="#{{ skill.id }}-panel">{{
+                            skill.name
+                            }}</a>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse" id="{{ skill.id }}-panel">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="detail in skill.details">{{ detail }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
