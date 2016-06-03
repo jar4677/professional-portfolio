@@ -11,33 +11,73 @@ app.controller('aboutController', function ($scope) {
     .controller('projectsController', function ($scope) {
         $scope.pageName = "My Projects";
         $scope.glyphicon = "picture";
+
+        var self = this;
+        self.project = null;
         
-        this.projects = {
+        self.projects = {
             'worldofmatchcraft': {
                 'id': 'worldofmatchcraft',
                 'name': 'World of MatchCraft',
+                'description': 'A Warcraft themed memory match game',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
             },
             'calculator': {
                 'id': 'calculator',
-                'name': 'Calculator'
+                'name': 'Calculator',
+                'description': 'A functional, minimalist calculator',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
             },
             'overthrow': {
                 'id': 'overthrow',
-                'name': 'Overthrow'
+                'name': 'Overthrow',
+                'description': 'A unique game of strategy',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
             },
             'guess': {
                 'id': 'guess',
-                'name': 'Guess'
+                'name': 'Guess',
+                'description': 'A colorful guessing game',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
             },
             'sgt': {
                 'id': 'sgt',
-                'name': 'Student Grade Table'
+                'name': 'Student Grade Table',
+                'description': 'A web-based reporting application of student grades',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
             }
         };
         
-        this.showProject = function (project) {
-            $('iframe').attr('src', 'http://jonrasmussen.me/' + project).focus();
-        }
+        self.showProject = function (project) {
+            if (self.project != project) {
+                $('iframe').attr('src', 'http://jonrasmussen.me/' + project).focus();
+                $('#details, #full-site').show();
+                $('#full-site').attr('href', 'http://jonrasmussen.me/' + project);
+                self.project = project;
+                console.log(self.project);
+            } else {
+                $('iframe').attr('src', '');
+                $('#details, #full-site').hide();
+                $('#full-site').attr('href', '').focus();
+                self.project = null;
+            }
+        };
+
     })
     .controller('skillsController', function ($scope) {
         $scope.pageName = "My Skills";
@@ -148,7 +188,7 @@ app.controller('aboutController', function ($scope) {
         };
     })
     .controller('expController', function ($scope) {
-        $scope.pageName = "My Experience";
+        $scope.pageName = "My Professional Experience";
         $scope.mainImage = "images/david.jpg";
         $scope.glyphicon = "briefcase";
     })

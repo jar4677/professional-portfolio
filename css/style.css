@@ -34,3 +34,7 @@ iframe {
     width: 100%;
     height: 850px;
 }
+
+#details, #full-site {
+    display: none;
+}

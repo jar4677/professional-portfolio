@@ -1,12 +1,8 @@
 <div class="jumbotron">
     <h1>{{ pageName }} <span class="glyphicon glyphicon-{{ glyphicon }}"></span></h1>
-    <figure>
-        <img ng-src="{{ mainImage }}" class="img-circle">
-    </figure>
 </div>
-
 <main>
-    <div class="">
+    <div class="col-sm-9 col-xs-12">
         <h1>About Me</h1>
 
         <h3>My Background</h3>
@@ -29,4 +25,7 @@
         <p>I want to work for someone who knows more than I do, who loves to share what they know, and together we
             make things that help others be successful.</p>
     </div>
+    <figure class="col-xs-3">
+        <img ng-src="{{ mainImage }}" class="img-circle">
+    </figure>
 </main>
