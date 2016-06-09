@@ -60,6 +60,15 @@ app.controller('aboutController', function ($scope) {
                     'Detail 1',
                     'Detail 2'
                 ]
+            },
+            'bubbles': {
+                'id': 'bubbles',
+                'name': 'bubbles',
+                'description': 'A simple, light animation of translucent circles',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
             }
         };
         
@@ -222,9 +231,8 @@ app.controller('aboutController', function ($scope) {
         this.clearForm = function () {
             $("#name, #email, #message").val('');
         };
-    });
-
-app.config(function ($routeProvider) {
+    })
+    .config(function ($routeProvider) {
     $routeProvider
         .when('/about', {
             templateUrl: "pages/about.html",
@@ -254,6 +262,11 @@ app.config(function ($routeProvider) {
         .otherwise({
             redirectTo: '/about'
         });
+})
+    .directive('modal', function () {
+        return{
+            restrict: 'E'
+        }
 });
 
 /**
