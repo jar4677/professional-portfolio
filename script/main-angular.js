@@ -11,7 +11,7 @@ app.controller('aboutController', function ($scope) {
     .controller('projectsController', function ($scope) {
         $scope.pageName = "My Projects";
         $scope.glyphicon = "picture";
-
+        
         var self = this;
         self.project = null;
         
@@ -86,12 +86,12 @@ app.controller('aboutController', function ($scope) {
                 self.project = null;
             }
         };
-
+        
     })
     .controller('skillsController', function ($scope) {
         $scope.pageName = "My Skills";
         $scope.glyphicon = "signal";
-
+        
         this.skills = {
             'html': {
                 'name': 'HTML5',
@@ -198,10 +198,29 @@ app.controller('aboutController', function ($scope) {
     })
     .controller('expController', function ($scope) {
         $scope.pageName = "My Professional Experience";
-        $scope.mainImage = "images/david.jpg";
         $scope.glyphicon = "briefcase";
+        this.jobs = [
+            {
+                'title': 'Data Analyst/Technician',
+                'org': 'Centralia Elementary School District',
+                'years': '2014 - 2016',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
+            },
+            {
+                'title': 'Systems Analyst',
+                'org': 'Convaid Inc.',
+                'years': '2012 - 2014',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
+            }
+        ];
     })
-    .controller('contactController', function ($scope) {
+    .controller('contactController', function ($scope, $http, $log) {
         $scope.pageName = "Contact Me";
         $scope.mainImage = "images/david.jpg";
         $scope.glyphicon = "comment";
@@ -209,23 +228,32 @@ app.controller('aboutController', function ($scope) {
         var self = this;
         
         this.contact = function () {
-            var name = $("#name").val();
-            var email = $("#email").val();
-            var message = $("#message").val();
-            var firstName = name.match(/([a-zA-Z]+)/);
+            var message = {
+                name: $("#name").val(),
+                email: $("#email").val(),
+                message: $("#message").val()
+            };
+            
+            var firstName = message.name.match(/([a-zA-Z]+)/);
             var thankYou = "Thank you " + firstName[1] + "!<br>I'll be in touch soon!";
-
-            dataBase.ref('data/messages').push({
-                'name': name,
-                'email': email,
-                'message': message
-            })
-                .then(function (response) {
-                    self.clearForm();
-                    $("#thank-you-message").html(thankYou);
-                }, function (response) {
-                    console.log(response);
-                })
+            
+            // $http({
+            //     url: 'script/email.php',
+            //     method: 'post',
+            //     data: $.param(message)
+            // })
+            //     .then(function () {
+                    dataBase.ref('data/messages').push(message)
+                        .then(function (response) {
+                            self.clearForm();
+                            $("#thank-you-message").html(thankYou);
+                            $log.info(response);
+                        }, function (response) {
+                            $log.warn(response);
+                        });
+                // }, function (response) {
+                //     $log.warn(response);
+                // });
         };
         
         this.clearForm = function () {
@@ -233,41 +261,36 @@ app.controller('aboutController', function ($scope) {
         };
     })
     .config(function ($routeProvider) {
-    $routeProvider
-        .when('/about', {
-            templateUrl: "pages/about.html",
-            controller: 'aboutController',
-            controllerAs: 'ac'
-        })
-        .when('/projects', {
-            templateUrl: "pages/projects.html",
-            controller: 'projectsController',
-            controllerAs: 'pc'
-        })
-        .when('/skills', {
-            templateUrl: 'pages/skills.html',
-            controller: 'skillsController',
-            controllerAs: 'sc'
-        })
-        .when('/experience', {
-            templateUrl: "pages/experience.html",
-            controller: 'expController',
-            controllerAs: 'ec'
-        })
-        .when('/contact', {
-            templateUrl: 'pages/contact-me.html',
-            controller: 'contactController',
-            controllerAs: 'cc'
-        })
-        .otherwise({
-            redirectTo: '/about'
-        });
-})
-    .directive('modal', function () {
-        return{
-            restrict: 'E'
-        }
-});
+        $routeProvider
+            .when('/about', {
+                templateUrl: "pages/about.html",
+                controller: 'aboutController',
+                controllerAs: 'ac'
+            })
+            .when('/projects', {
+                templateUrl: "pages/projects.html",
+                controller: 'projectsController',
+                controllerAs: 'pc'
+            })
+            .when('/skills', {
+                templateUrl: 'pages/skills.html',
+                controller: 'skillsController',
+                controllerAs: 'sc'
+            })
+            .when('/experience', {
+                templateUrl: "pages/experience.html",
+                controller: 'expController',
+                controllerAs: 'ec'
+            })
+            .when('/contact', {
+                templateUrl: 'pages/contact-me.html',
+                controller: 'contactController',
+                controllerAs: 'cc'
+            })
+            .otherwise({
+                redirectTo: '/about'
+            });
+    });
 
 /**
  * Firebase config and initialization
