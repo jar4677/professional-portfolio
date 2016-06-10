@@ -1,0 +1,300 @@
+/**
+ * Created by jar4677 on 5/26/16.
+ */
+var app = angular.module('portfolioApp', ['ngRoute']);
+
+app.controller('aboutController', function ($scope) {
+    $scope.pageName = "About Me";
+    $scope.mainImage = "images/jon_headshot.jpg";
+    $scope.glyphicon = "user";
+})
+    .controller('projectsController', function ($scope) {
+        $scope.pageName = "My Projects";
+        $scope.glyphicon = "picture";
+        
+        var self = this;
+        self.project = null;
+        
+        self.projects = {
+            'worldofmatchcraft': {
+                'id': 'worldofmatchcraft',
+                'name': 'World of MatchCraft',
+                'description': 'A Warcraft themed memory match game',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
+            },
+            'calculator': {
+                'id': 'calculator',
+                'name': 'Calculator',
+                'description': 'A functional, minimalist calculator',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
+            },
+            'overthrow': {
+                'id': 'overthrow',
+                'name': 'Overthrow',
+                'description': 'A unique game of strategy',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
+            },
+            'guess': {
+                'id': 'guess',
+                'name': 'Guess',
+                'description': 'A colorful guessing game',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
+            },
+            'sgt': {
+                'id': 'sgt',
+                'name': 'Student Grade Table',
+                'description': 'A web-based reporting application of student grades',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
+            },
+            'bubbles': {
+                'id': 'bubbles',
+                'name': 'bubbles',
+                'description': 'A simple, light animation of translucent circles',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
+            }
+        };
+        
+        self.showProject = function (project) {
+            if (self.project != project) {
+                $('iframe').attr('src', 'http://jonrasmussen.me/' + project).focus();
+                $('#details, #full-site').show();
+                $('#full-site').attr('href', 'http://jonrasmussen.me/' + project);
+                self.project = project;
+                console.log(self.project);
+            } else {
+                $('iframe').attr('src', '');
+                $('#details, #full-site').hide();
+                $('#full-site').attr('href', '').focus();
+                self.project = null;
+            }
+        };
+        
+    })
+    .controller('skillsController', function ($scope) {
+        $scope.pageName = "My Skills";
+        $scope.glyphicon = "signal";
+        
+        this.skills = {
+            'html': {
+                'name': 'HTML5',
+                'logo': "images/icons/html_logo.png",
+                'id': 'html',
+                'details': {
+                    "detail1": "As the backbone of any web application, it is critical for a developer to have a" +
+                    " strong understanding of HTML",
+                    "detail2": "I created the HTML skeleton for each of my projects."
+                }
+            },
+            'css': {
+                'name': 'CSS3',
+                'logo': "images/icons/css_logo.png",
+                'id': 'css',
+                'details': {
+                    "detail1": "Detail 1",
+                    "detail2": "Detail 2",
+                    "detail3": "Detail 3",
+                    "detail4": "Detail 4"
+                }
+            },
+            'javascript': {
+                'name': 'JavaScript',
+                'logo': "images/icons/js_logo.png",
+                'id': 'javascript',
+                'details': {
+                    "detail1": "Detail 1",
+                    "detail2": "Detail 2",
+                    "detail3": "Detail 3"
+                }
+            },
+            'jquery': {
+                'name': 'jQuery',
+                'logo': "images/icons/jquery_logo.png",
+                'id': 'jquery',
+                'details': {
+                    "detail1": "Detail 1",
+                    "detail2": "Detail 2",
+                    "detail3": "Detail 3"
+                }
+            },
+            'ajax': {
+                'name': 'AJAX',
+                'logo': "images/icons/ajax_logo.png",
+                'id': 'ajax',
+                'details': {
+                    "detail1": "Detail 1",
+                    "detail2": "Detail 2",
+                    "detail3": "Detail 3"
+                }
+            },
+            'bootstrap': {
+                'name': 'Bootstrap',
+                'logo': "images/icons/bootstrap_logo.png",
+                'id': 'bootstrap',
+                'details': {
+                    "detail1": "Detail 1",
+                    "detail2": "Detail 2",
+                    "detail3": "Detail 3"
+                }
+            },
+            'angular': {
+                'name': 'AngularJS',
+                'logo': "images/icons/angular_logo.png",
+                'id': 'angular',
+                'details': {
+                    "detail1": "Detail 1",
+                    "detail2": "Detail 2",
+                    "detail3": "Detail 3"
+                }
+            },
+            'php': {
+                'name': 'PHP',
+                'logo': "images/icons/php_logo.png",
+                'id': 'php',
+                'details': {
+                    "detail1": "Detail 1",
+                    "detail2": "Detail 2",
+                    "detail3": "Detail 3"
+                }
+            },
+            'mysql': {
+                'name': 'MySQL',
+                'logo': "images/icons/mysql_logo.png",
+                'id': 'mysql',
+                'details': {
+                    "detail1": "Detail 1",
+                    "detail2": "Detail 2",
+                    "detail3": "Detail 3"
+                }
+            },
+            'firebase': {
+                'name': 'Firebase',
+                'logo': "images/icons/firebase_logo.png",
+                'id': 'firebase',
+                'details': {
+                    "detail1": "Detail 1",
+                    "detail2": "Detail 2",
+                    "detail3": "Detail 3"
+                }
+            }
+        };
+    })
+    .controller('expController', function ($scope) {
+        $scope.pageName = "My Professional Experience";
+        $scope.glyphicon = "briefcase";
+        this.jobs = [
+            {
+                'title': 'Data Analyst/Technician',
+                'org': 'Centralia Elementary School District',
+                'years': '2014 - 2016',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
+            },
+            {
+                'title': 'Systems Analyst',
+                'org': 'Convaid Inc.',
+                'years': '2012 - 2014',
+                'details': [
+                    'Detail 1',
+                    'Detail 2'
+                ]
+            }
+        ];
+    })
+    .controller('contactController', function ($scope, $http, $log) {
+        $scope.pageName = "Contact Me";
+        $scope.mainImage = "images/david.jpg";
+        $scope.glyphicon = "comment";
+        
+        var self = this;
+        
+        this.contact = function () {
+            var message = {
+                name: $("#name").val(),
+                email: $("#email").val(),
+                message: $("#message").val()
+            };
+            
+            var firstName = message.name.match(/([a-zA-Z]+)/);
+            var thankYou = "Thank you " + firstName[1] + "!<br>I'll be in touch soon!";
+            
+            // $http({
+            //     url: 'script/email.php',
+            //     method: 'post',
+            //     data: $.param(message)
+            // })
+            //     .then(function () {
+                    dataBase.ref('data/messages').push(message)
+                        .then(function (response) {
+                            self.clearForm();
+                            $("#thank-you-message").html(thankYou);
+                            $log.info(response);
+                        }, function (response) {
+                            $log.warn(response);
+                        });
+                // }, function (response) {
+                //     $log.warn(response);
+                // });
+        };
+        
+        this.clearForm = function () {
+            $("#name, #email, #message").val('');
+        };
+    })
+    .config(function ($routeProvider) {
+        $routeProvider
+            .when('/about', {
+                templateUrl: "pages/about.html",
+                controller: 'aboutController',
+                controllerAs: 'ac'
+            })
+            .when('/projects', {
+                templateUrl: "pages/projects.html",
+                controller: 'projectsController',
+                controllerAs: 'pc'
+            })
+            .when('/skills', {
+                templateUrl: 'pages/skills.html',
+                controller: 'skillsController',
+                controllerAs: 'sc'
+            })
+            .when('/experience', {
+                templateUrl: "pages/experience.html",
+                controller: 'expController',
+                controllerAs: 'ec'
+            })
+            .when('/contact', {
+                templateUrl: 'pages/contact-me.html',
+                controller: 'contactController',
+                controllerAs: 'cc'
+            })
+            .otherwise({
+                redirectTo: '/about'
+            });
+    });
+
+/**
+ * Firebase config and initialization
+ */
+firebase.initializeApp(config);
+
+var dataBase = firebase.database();
