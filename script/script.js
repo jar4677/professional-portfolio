@@ -80,7 +80,7 @@ app.controller('aboutController', function ($scope) {
         
         self.showProject = function (project) {
             if (self.project != project) {
-                $('iframe').attr('src', '/var/www/html/' + project).focus();
+                $('iframe').attr('src', '../' + project).focus();
                 $('#details, #full-site').show();
                 $('#full-site').attr('href', 'http://jonrasmussen.me/' + project);
                 self.project = project;
