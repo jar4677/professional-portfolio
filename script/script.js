@@ -248,6 +248,9 @@ app.controller('aboutController', function ($scope) {
             $http({
                 url: 'script/email.php',
                 method: 'post',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
                 data: $.param(message)
             })
                 .then(function (response) {
