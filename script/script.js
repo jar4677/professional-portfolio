@@ -250,8 +250,9 @@ app.controller('aboutController', function ($scope) {
                 method: 'post',
                 data: $.param(message)
             })
-                .then(function () {
-            dataBase.ref('data/messages').push(message)
+                .then(function (response) {
+                    $log.info(response);
+                    dataBase.ref('data/messages').push(message)
                 .then(function (response) {
                     self.clearForm();
                     $("#thank-you-message").html(thankYou);
@@ -260,8 +261,8 @@ app.controller('aboutController', function ($scope) {
                     $log.warn(response);
                 });
             }, function (response) {
-                $log.warn(response);
-            });
+                    $log.warn(response);
+                });
         };
         
         this.clearForm = function () {
