@@ -245,12 +245,12 @@ app.controller('aboutController', function ($scope) {
             var firstName = message.name.match(/([a-zA-Z]+)/);
             var thankYou = "Thank you " + firstName[1] + "!<br>I'll be in touch soon!";
             
-            // $http({
-            //     url: 'script/email.php',
-            //     method: 'post',
-            //     data: $.param(message)
-            // })
-            //     .then(function () {
+            $http({
+                url: 'script/email.php',
+                method: 'post',
+                data: $.param(message)
+            })
+                .then(function () {
             dataBase.ref('data/messages').push(message)
                 .then(function (response) {
                     self.clearForm();
@@ -259,9 +259,9 @@ app.controller('aboutController', function ($scope) {
                 }, function (response) {
                     $log.warn(response);
                 });
-            // }, function (response) {
-            //     $log.warn(response);
-            // });
+            }, function (response) {
+                $log.warn(response);
+            });
         };
         
         this.clearForm = function () {
