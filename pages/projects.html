@@ -1,19 +1,50 @@
 <div class="jumbotron">
     <h1>{{ pageName }} <span class="glyphicon glyphicon-{{ glyphicon }}"></span></h1>
     <br>
-    <div class="btn-group btn-group-justified">
-        <div class="btn-group" ng-repeat="project in pc.projects">
-        <button type="button" class="btn btn-default" ng-click="pc.showProject(project.id)">{{ project.name
-            }}</button>
-        </div>
-    </div>
+    <!--<div class="btn-group btn-group-justified hidden-sm">-->
+        <!--<div class="btn-group" ng-repeat="project in pc.projects">-->
+        <!--<button type="button" class="btn btn-default" ng-click="pc.showProject(project.id)">{{ project.name-->
+            <!--}}</button>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <ul class="nav nav-justified nav-pills hidden-sm hidden-xs text-center">
+        <li ng-repeat="project in pc.projects">
+            <button type="button" class="btn btn-default" ng-click="pc.showProject(project.id)">
+                {{ project.name }}
+            </button>
+        </li>
+    </ul>
     <br>
-    <button type="button" class="btn btn-info pull-left" id="details" data-toggle="modal" data-target="#projectModal">
+    <button type="button" class="btn btn-info pull-left hidden-sm hidden-xs" id="details" data-toggle="modal"
+            data-target="#projectModal">
         Details</button>
-    <a href="" id="full-site" target="_blank"><button type="button" class="btn btn-success pull-right">Full
+    <a href="" id="full-site" target="_blank"><button type="button" class="btn btn-success pull-right hidden-sm hidden-xs">Full
         Site</button></a>
 </div>
-<iframe src="http://jonrasmussen.me/bubbles" frameborder="0"></iframe>
+<iframe class="hidden-sm hidden-xs" src="http://jonrasmussen.me/bubbles" frameborder="0"></iframe>
+
+<div class="col-sm-12 visible-sm visible-xs">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default" ng-repeat="project in pc.projects">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" data-target="#{{ project.id }}-panel">
+                        {{ project.name}}
+                    </a>
+                    <a href="http://jonrasmussen.me/{{ project.id }}" id="mobile-full-site" target="_blank">
+                        <button type="button" class="btn btn-success btn-xs pull-right">Full Site</button>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" id="{{ project.id }}-panel">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="detail in project.details">{{ detail }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="projectModal" class="modal fade" role="dialog">
     <div class="modal-dialog">

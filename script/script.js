@@ -16,6 +16,15 @@ app.controller('aboutController', function ($scope) {
         self.project = null;
         
         self.projects = {
+            'sgt': {
+                'id': 'sgt',
+                'name': 'Student Grade Table',
+                'description': 'A web-based reporting application of student grades',
+                'details': [
+                    'This clean, mobile-responsive reporting application is connected to a live database.',
+                    'You can create, read, updated, and delete student grades without ever leaving the page.'
+                ]
+            },
             'worldofmatchcraft': {
                 'id': 'worldofmatchcraft',
                 'name': 'World of MatchCraft',
@@ -55,15 +64,6 @@ app.controller('aboutController', function ($scope) {
                     'The color changes from hot (red) to cold (blue) according to how close or far your guess is to' +
                     ' the number.',
                     'Make sure you mouse over the logged number circles for some bonus animation.'
-                ]
-            },
-            'sgt': {
-                'id': 'sgt',
-                'name': 'Student Grade Table',
-                'description': 'A web-based reporting application of student grades',
-                'details': [
-                    'This clean, mobile-responsive reporting application is connected to a live database.',
-                    'You can create, read, updated, and delete student grades without ever leaving the page.'
                 ]
             },
             'bubbles': {
