@@ -31,8 +31,8 @@ figure{
 }
 
 iframe {
-    width: 100%;
-    height: 850px;
+    border: 2px inset black;
+    border-radius: 10px;
 }
 
 #details, #full-site {

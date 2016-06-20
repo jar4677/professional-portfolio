@@ -1,16 +1,9 @@
 <div class="jumbotron">
     <h1>{{ pageName }} <span class="glyphicon glyphicon-{{ glyphicon }}"></span></h1>
     <br>
-    <!--<div class="btn-group btn-group-justified hidden-sm">-->
-        <!--<div class="btn-group" ng-repeat="project in pc.projects">-->
-        <!--<button type="button" class="btn btn-default" ng-click="pc.showProject(project.id)">{{ project.name-->
-            <!--}}</button>-->
-        <!--</div>-->
-    <!--</div>-->
-
     <ul class="nav nav-justified nav-pills hidden-sm hidden-xs text-center">
         <li ng-repeat="project in pc.projects">
-            <button type="button" class="btn btn-default" ng-click="pc.showProject(project.id)">
+            <button type="button" class="btn btn-default" ng-click="pc.showProject(project)">
                 {{ project.name }}
             </button>
         </li>
@@ -18,11 +11,18 @@
     <br>
     <button type="button" class="btn btn-info pull-left hidden-sm hidden-xs" id="details" data-toggle="modal"
             data-target="#projectModal">
-        Details</button>
-    <a href="" id="full-site" target="_blank"><button type="button" class="btn btn-success pull-right hidden-sm hidden-xs">Full
-        Site</button></a>
+        Details
+    </button>
+    <a href="" id="full-site" target="_blank">
+        <button type="button" class="btn btn-success pull-right hidden-sm hidden-xs">Full
+            Site
+        </button>
+    </a>
 </div>
-<iframe class="hidden-sm hidden-xs" src="http://jonrasmussen.me/bubbles" frameborder="0"></iframe>
+<div class="col-xs-12 text-center">
+    <iframe class="hidden-sm hidden-xs" src="http://jonrasmussen.me/bubbles" height="500px" width="100%"
+            frameborder="0"></iframe>
+</div>
 
 <div class="col-sm-12 visible-sm visible-xs">
     <div class="panel-group" id="accordion">
@@ -52,12 +52,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">{{ pc.projects[pc.project].name }}</h4>
+                <h4 class="modal-title">{{ pc.project.name }}</h4>
             </div>
             <div class="modal-body">
-                <h5>{{ pc.projects[pc.project].description }}</h5>
+                <h5>{{ pc.project.description }}</h5>
                 <ul>
-                    <li ng-repeat="detail in pc.projects[pc.project].details">{{ detail }}</li>
+                    <li ng-repeat="detail in pc.project.details">{{ detail }}</li>
                 </ul>
             </div>
             <div class="modal-footer">
