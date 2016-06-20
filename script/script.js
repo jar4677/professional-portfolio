@@ -23,7 +23,28 @@ app.controller('aboutController', function ($scope) {
                 'details': [
                     'This clean, mobile-responsive reporting application is connected to a live database.',
                     'You can create, read, updated, and delete student grades without ever leaving the page.'
-                ]
+                ],
+                'dimensions': {
+                    'height': '500px',
+                    'width': '100%'
+                }
+            },
+            'plop': {
+                'id': 'plop',
+                'name': 'Plop',
+                'description': 'A mobile app for finding and rating bathroom facilities',
+                'details': [
+                    'Plop integrates the Google Maps API and our own database of facilities to give the user' +
+                    ' information regarding both the location and the overall quality of bathrooms in their vicinity',
+                    'I served as the Lead Front-End Angular Developer on this project.',
+                    'For this application I created two custom services, a custom directive, and a custom filter' +
+                    ' (which replaces any profanity with the poop emoji).'
+                ],
+                'dimensions': {
+                    'height': '667px',
+                    'width': '375px'
+                }
+
             },
             'worldofmatchcraft': {
                 'id': 'worldofmatchcraft',
@@ -32,7 +53,11 @@ app.controller('aboutController', function ($scope) {
                 'details': [
                     'The core of this game is the Object-Oriented Javascript.',
                     'Each player, game board, and card is a unique object with properties and methods.'
-                ]
+                ],
+                'dimensions': {
+                    'height': '800px',
+                    'width': '100%'
+                }
             },
             'calculator': {
                 'id': 'calculator',
@@ -42,7 +67,11 @@ app.controller('aboutController', function ($scope) {
                     'Creating a functional calculator has been one of the most rewarding challenges I have faced.',
                     'Though it may seem a simple process, once I explored the way calculators handle unusual user' +
                     ' input I was faced with complex logic puzzles which were a joy to solve.'
-                ]
+                ],
+                'dimensions': {
+                    'height': '500px',
+                    'width': '100%'
+                }
             },
             'overthrow': {
                 'id': 'overthrow',
@@ -52,7 +81,11 @@ app.controller('aboutController', function ($scope) {
                     'Overthrow began as a twist on the classic game of Tic-Tac-Toe.',
                     'With the addition of the freedom to change which mark one places and the ability to overwrite' +
                     ' previous marks, the game took on a whole new dimension.'
-                ]
+                ],
+                'dimensions': {
+                    'height': '500px',
+                    'width': '100%'
+                }
             },
             'guess': {
                 'id': 'guess',
@@ -64,7 +97,11 @@ app.controller('aboutController', function ($scope) {
                     'The color changes from hot (red) to cold (blue) according to how close or far your guess is to' +
                     ' the number.',
                     'Make sure you mouse over the logged number circles for some bonus animation.'
-                ]
+                ],
+                'dimensions': {
+                    'height': '500px',
+                    'width': '100%'
+                }
             },
             'bubbles': {
                 'id': 'bubbles',
@@ -74,15 +111,23 @@ app.controller('aboutController', function ($scope) {
                     'This simple animation is the happy result of experimentation and tinkering.',
                     'Enjoy the fantastic colors the circles make when they overlap.',
                     'For more fun, try to move all the circles to one side.'
-                ]
+                ],
+                'dimensions': {
+                    'height': '500px',
+                    'width': '100%'
+                }
             }
         };
         
         self.showProject = function (project) {
             if (self.project != project) {
-                $('iframe').attr('src', '../' + project).focus();
+                $('iframe').attr({
+                    'src': '../' + project.id,
+                    'height': project.dimensions.height,
+                    'width': project.dimensions.width
+                }).focus();
                 $('#details, #full-site').show();
-                $('#full-site').attr('href', 'http://jonrasmussen.me/' + project);
+                $('#full-site').attr('href', 'http://jonrasmussen.me/' + project.id);
                 self.project = project;
             } else {
                 $('iframe').attr('src', '');
@@ -91,7 +136,6 @@ app.controller('aboutController', function ($scope) {
                 self.project = null;
             }
         };
-        
     })
     .controller('skillsController', function ($scope) {
         $scope.pageName = "My Skills";
