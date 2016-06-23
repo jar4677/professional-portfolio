@@ -3,7 +3,7 @@ require_once('/var/www/cred/email_config.php');
 require('../phpmailer/PHPMailer/PHPMailerAutoload.php');
 $mail = new PHPMailer;
 // Enable verbose debug output
-$mail->SMTPDebug = 3;
+$mail->SMTPDebug = 0;
 // Set mailer to use SMTP
 $mail->isSMTP();
 // Specify main and backup SMTP servers
