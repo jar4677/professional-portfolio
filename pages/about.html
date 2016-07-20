@@ -2,10 +2,13 @@
     <h1>{{ pageName }} <span class="glyphicon glyphicon-{{ glyphicon }}"></span></h1>
 </div>
 <main>
-    <figure class="col-sm-3 col-xs-12 pull-right">
+    <figure class="col-sm-3 hidden-xs pull-right">
         <img ng-src="{{ mainImage }}" class="img-circle">
     </figure>
-    <div class="col-sm-8 col-xs-12">
+    <figure class="visible-xs col-xs-offset-3 col-xs-6">
+        <img ng-src="{{ mainImage }}" class="img-circle">
+    </figure>
+    <div class="col-sm-9 col-xs-12">
         <p>I am a Junior Software/Web Developer in Orange County, California. I am passionate about using the
             fantastic technologies which are now available to create applications which solve real-world problems. I
         love to help people achieve their goals, streamline their work, and generally make their lives better.</p>
