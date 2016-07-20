@@ -38,3 +38,7 @@ iframe {
 #details, #full-site {
     display: none;
 }
+
+.link-button:hover, .link-button:active, .link-button:visited, .link-button:link {
+    text-decoration: none;
+}

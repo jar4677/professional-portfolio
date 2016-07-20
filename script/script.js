@@ -278,8 +278,26 @@ app.controller('aboutController', function ($scope) {
         $scope.glyphicon = "comment";
         
         var self = this;
+
+        self.contactButtons = [
+            {
+                href: "https://github.com/jar4677",
+                label: "GitHub",
+                target: "_blank"
+            },
+            {
+                href: "http://www.linkedin.com/in/jonathanarasmussen",
+                label: "LinkedIn",
+                target: "_blank"
+            },
+            {
+                href: "mailto:jonathan.a.rasmussen@gmail.com",
+                label: "Email",
+                target: ""
+            }
+        ];
         
-        this.contact = function () {
+        self.contact = function () {
             var message = {
                 name: $("#name").val(),
                 email: $("#email").val(),
@@ -312,7 +330,7 @@ app.controller('aboutController', function ($scope) {
                 });
         };
         
-        this.clearForm = function () {
+        self.clearForm = function () {
             $("#name, #email, #message").val('');
         };
     })

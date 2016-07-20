@@ -5,14 +5,9 @@
 <main>
     <div class="col-sm-9 col-xs-12">
         <div class="list-group col-xs-12">
-            <a href="https://github.com/jar4677" target="_blank">
-                <button type="button" class="btn btn-default btn-lg">Github</button>
-            </a>
-            <a href="http://www.linkedin.com/in/jonathanarasmussen" target="_blank">
-                <button type="button" class="btn btn-default btn-lg">LinkedIn</button>
-            </a>
-            <a href="mailto:jonathan.a.rasmussen@gmail.com">
-                <button type="button" class="btn btn-default btn-lg">Email</button>
+            <a ng-repeat="button in cc.contactButtons" href="{{ button.href }}" target="{{ button.target }}"
+               class="link-button">
+                <label class="btn btn-default btn-lg">{{ button.label }}</label>
             </a>
         </div>
         <div class="col-xs-12">
