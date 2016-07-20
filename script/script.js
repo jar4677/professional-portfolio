@@ -298,36 +298,74 @@ app.controller('aboutController', function ($scope) {
         ];
         
         self.contact = function () {
-            var message = {
-                name: $("#name").val(),
-                email: $("#email").val(),
-                message: $("#message").val()
-            };
-            
-            var firstName = message.name.match(/([a-zA-Z]+)/);
-            var thankYou = "Thank you " + firstName[1] + "!<br>I'll be in touch soon!";
-            
-            $http({
-                url: 'script/email.php',
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                data: $.param(message)
-            })
-                .then(function (response) {
-                    $log.info(response);
-                    dataBase.ref('data/messages').push(message)
-                .then(function (response) {
-                    self.clearForm();
-                    $("#thank-you-message").html(thankYou);
-                    $log.info(response);
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var emailMatch = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var message = $("#message").val();
+            var error = '';
+            var feedback = $("#thank-you-message");
+
+            if(name == ''){
+                error += "Please tell me your name.";
+            }
+
+            if(email == ''){
+                if(error != ''){
+                    error += "<br><br>";
+                }
+                error += "What email address should I reply to?"
+            } else if (!email.match(emailMatch)){
+                if(error != ''){
+                    error += "<br><br>";
+                }
+                error += "That doesn't seem to be a valid email address."
+            }
+
+            if(message == ''){
+                if(error != ''){
+                    error += "<br><br>";
+                }
+                error += "What do you want to tell me?"
+            }
+
+            if(error != ''){
+                feedback.html(error);
+            } else {
+                feedback.html('Sending Message');
+                var emailData = {
+                    name: name,
+                    email: email,
+                    message: message
+                };
+
+                var firstName = name.match(/([a-zA-Z]+)/);
+                var thankYou = "Thank you " + firstName[1] + "!<br>I'll be in touch soon!";
+
+                $http({
+                    url: 'script/email.php',
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    data: $.param(emailData)
+                })
+                    .then(function (response) {
+                        $log.info(response);
+                        dataBase.ref('data/messages').push(emailData)
+                    .then(function (response) {
+                        self.clearForm();
+                        feedback.html(thankYou);
+                        $log.info(response);
+                    }, function (response) {
+                        $log.warn(response);
+                        feedback.html("Oops, there was a problem.<br>Message failed to send.");
+                    });
                 }, function (response) {
-                    $log.warn(response);
-                });
-            }, function (response) {
-                    $log.warn(response);
-                });
+                        $log.warn(response);
+                        feedback.html("Oops, there was a problem.<br>Message failed to send.");
+                    });
+            }
+
         };
         
         self.clearForm = function () {
